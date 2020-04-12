@@ -1,0 +1,122 @@
+$font: Arial
+$displayed: grid
+$color: white
+$colorNav: gray
+$textColor: black
+$rem: 0.3rem
+$texalign: center
+$zero: 0
+
+body
+	background: linear-gradient(-45deg, #fdfdfd, #a9e9f3, #6acff3, #f5f5f5)
+	background-size: 400% 400%
+	animation: gradient 15s ease infinite
+    
+	@keyframes gradient 
+		0%
+		background-position: 0% 50%
+        
+		50% 
+		background-position: 100% 50%
+        
+		100% 
+		background-position: 0% 50%
+
+p
+	border: medium double rgb(0,0,255)
+
+h1
+	color: $textColor
+	font-family: $font
+
+@mixin t($fontSize, $lineHeight)
+	font-size: $fontSize
+	line-height: $lineHeight
+
+.font
+	@include t(30pc, 24px)
+
+@function numero($num: 500px)
+	@return $num/2
+
+.gridens
+	display: $displayed
+	padding: $rem
+	grid-gap: $rem
+	grid-template-columns: repeat(auto-fit, minmax(70px, 1fr))
+	grid-template-rows: repeat(2, 150px)
+
+.gridens div
+	background-color: $color
+	color: $textColor
+	padding: $rem
+
+div.sombra
+	width: 250px
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+	text-align: $texalign
+
+div.container 
+	padding: 10px
+
+input[type=text] 
+	width: 100px
+	-webkit-transition: width .35s ease-in-out
+	transition: width .35s ease-in-out
+
+input[type=text]:focus 
+	width: 200px
+
+.images
+	width: 210px
+	height: 140px
+
+ul 
+	list-style-type: none
+	margin: $zero
+	padding: $zero
+	overflow: hidden
+	background-color: #333
+
+li 
+	float: left
+
+li a 
+	display: block
+	color: white
+	text-align: center
+	padding: 14px 16px
+	text-decoration: none
+
+li a:hover 
+	background-color: $colorNav
+
+img
+	width: 100px
+	height: 100px
+	background: $color
+	transition: width 2s, height 2s, transform 2s
+
+img:hover
+	width: 100px
+	height: 100px
+	transform: rotate(360deg)
+
+.tooltip
+	position: relative
+	display: inline-block
+	border-bottom: 1px dotted black
+
+.tooltip .toolText
+	visibility: hidden
+	width: 150px
+	background-color: $textColor
+	color: #fff
+	text-align: $texalign
+	border-radius: 6px
+	padding: 5px 0
+	position: absolute
+	z-index: 1
+
+.tooltip:hover .toolText
+	visibility: visible
